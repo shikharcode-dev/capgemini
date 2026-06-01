@@ -165,21 +165,124 @@
 # employee1.modify_salary(55000)
 # print("After modification:", employee1.salary)
 
-# create one class bank and name and create 2 object as cosstumator and create constructor as account holder and balance by 1k and creat one amount to add balance and shown the current balance and also shown then balnce after adding the amount
+# create one class bank and name and create 2 object as customer and create constructor as account holder and balance by 1k and creat one amount to add balance and shown the current balance and also shown then balnce after adding the amount
+# now widraw the amount 
 
-class Bank:
-    def __init__(self, account_holder, balance):
-        self.account_holder = account_holder
-        self.balance = balance
+# class Bank:
+#     def __init__(self, account_holder, balance):
+#         self.account_holder = account_holder
+#         self.balance = balance
 
-    def display(self):
-        print("Account Holder:", self.account_holder)
-        print("Current Balance:", self.balance)
+#     def display(self):
+#         print("Account Holder:", self.account_holder)
+#         print("Current Balance:", self.balance)
 
-    def add_balance(self, amount):
-        self.balance += amount
-        print("Balance after adding amount:", self.balance)
+#     def add_balance(self, amount):
+#         self.balance += amount
+#         print("Balance after adding amount:", self.balance)
 
-customer1 = Bank("Luffy", 1000)
-customer1.display()
-customer1.add_balance(500)
+#     def withdraw_amount(self, withdraw):
+#         withdraw_amount = self.balance - withdraw
+#         print("Balance after withdrawing amount:", withdraw_amount)
+
+# customer1 = Bank("Luffy", 1000)
+# customer1.display()
+# customer1.add_balance(500)
+# customer1.withdraw_amount(300)
+
+# the way mam did
+# class bank:
+#     branch = "SBI"
+#     IFSC = "SBIN0002449"
+#     Branch = "Chnadigarh"
+
+#     def __init__(self, cname, pno, balance, ac_no):
+#         self.cname = cname
+#         self.pno = pno
+#         self.balance = balance
+#         self.ac_no = ac_no
+
+#     def display(self):
+#         print("Customer Name:", self.cname)
+#         print("Phone Number:", self.pno)
+#         print("Balance:", self.balance)
+#         print("Account Number:", self.ac_no)
+#         print("Branch:", self.branch)
+#         print("IFSC:", self.IFSC)
+#         print("Branch:", self.Branch)
+
+#     def deposit(self, amount):
+#         self.balance += amount
+#         print("Balance after deposit:", self.balance)
+
+#     def withdraw(self, amount):
+#         self.balance -= amount
+#         print("Balance after withdrawal:", self.balance)
+    
+#     @classmethod # class method is used to perform some modification on the class member and it is called by the class name @classmethod is used to define a method that belongs to the class rather than an instance of the class. It can be called using the class name and can modify class-level attributes. The first parameter of a class method is conventionally named 'cls', which refers to the class itself. Class methods are defined using the @classmethod decorator.
+#     def display_branch(cls):
+#         print("Branch:", cls.branch)
+#         print("IFSC:", cls.IFSC)
+#         print("Branch:", cls.Branch)
+#     @classmethod
+#     def ch_branch(cls, new_branch):
+#         cls.branch = new_branch
+#         print("Branch name changed to:", cls.branch)
+
+# # object creation
+# customer1 = bank("Luffy", 1234567890, 1000, "SBIN0002449")
+# customer1.display()
+# customer1.deposit(500)
+# customer1.withdraw(300)
+# bank.display_branch()
+# bank.ch_branch("HDFC")
+# bank.display_branch()
+
+
+#Q. create a class called shoping and add product if user buy product if 8 items and reduces amount. add item, remove item if not in stock, or defected item, and also display if item not there show outof stock.
+class Shopping:
+    stock = 8   # Class variable
+
+    @classmethod
+    def add_item(cls, quantity):
+        cls.stock += quantity
+        print(quantity, "items added.")
+        print("Current Stock:", cls.stock)
+
+    @classmethod
+    def buy_item(cls, quantity):
+        if quantity <= cls.stock:
+            cls.stock -= quantity
+            print(quantity, "items purchased.")
+            print("Remaining Stock:", cls.stock)
+        else:
+            print("Out of Stock!")
+
+    @classmethod
+    def remove_item(cls, quantity):
+        if quantity <= cls.stock:
+            cls.stock -= quantity
+            print(quantity, "defected items removed.")
+            print("Remaining Stock:", cls.stock)
+        else:
+            print("Not enough items in stock!")
+
+    @classmethod
+    def display_stock(cls):
+        if cls.stock > 0:
+            print("Current Stock:", cls.stock)
+        else:
+            print("Out of Stock!")
+
+
+# Calling class methods
+Shopping.display_stock()
+
+Shopping.buy_item(3)
+
+Shopping.add_item(5)
+
+Shopping.remove_item(2)
+
+Shopping.display_stock()
+

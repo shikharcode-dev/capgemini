@@ -24,3 +24,5 @@ print()
 print(obj2.brand, obj2.color, obj2.HP)
 print()
 print(obj3.brand, obj3.color, obj3.HP)
+
+
