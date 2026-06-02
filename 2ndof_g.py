@@ -88,3 +88,60 @@ dev = developer("Ichigo", 60000, "Python")
 
 emp.show_employee()
 dev.show_developer() 
+
+
+
+
+# multilevel inheritance =  A class inherits from a derived class, making it a child of the child class. This creates a hierarchy of classes.
+# example of multilevel inheritance 
+# class A:
+#     def method_a(self):
+#         print("Method A")
+
+# class B(A):
+#     def method_b(self):
+#         print("Method B")
+
+# class C(B):
+#     def method_c(self):
+#         print("Method C")
+# obj = C()
+# obj.method_a() # inherited from class A
+
+# obj.method_b() # inherited from class B
+
+
+
+
+
+#example use the same example of employee and developer just add one more class as python developer and showing all inherit the above classes as multilevel inheritance
+class employee:
+    def __init__(self, name, sallary):
+        self.name = name
+        self.sallary = sallary
+    def show_employee(self):
+        print(self.name, self.sallary)
+
+
+class developer(employee):
+    def __init__(self, name, sallary, lang):
+        super().__init__(name, sallary)
+        self.lang = lang
+    def show_developer(self):
+        print(self.name, self.sallary, self.lang)
+
+
+class python_developer(developer):
+    def __init__(self, name, sallary, lang, framework):
+        super().__init__(name, sallary, lang)
+        self.framework = framework
+    def show_python_developer(self):
+        print(self.name, self.sallary, self.lang, self.framework)
+
+emp = employee("Luffy", 50000)
+dev = developer("Ichigo", 60000, "Python")
+py_dev = python_developer("Naruto", 70000, "Python", "Django")
+
+emp.show_employee()
+dev.show_developer()
+py_dev.show_python_developer() 
