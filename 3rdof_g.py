@@ -273,3 +273,179 @@ box2 = Box(20)
 
 total_weight = box1 + box2
 print("Total Weight =", total_weight) 
+
+
+
+
+
+
+
+
+# Encapsulation: The bundling of data (attributes) and methods that operate on that data within a single unit (class)
+# It restricts direct access to some of an object's components, which is a means of preventing accidental interference and misuse
+# Encapsulation is achieved by using access modifiers (public, protected, private) to control the visibility of class members
+# It helps in data hiding and provides better control over data by using getter and setter methods
+# Benefits: Increases security, provides data hiding, makes code more maintainable and flexible, and reduces complexity
+
+# Access Specifiers in Python
+# Access specifiers control the visibility and accessibility of class members (attributes and methods)
+# Python uses naming conventions to indicate access levels, unlike other languages that use keywords
+
+# 1. PUBLIC - Accessible from anywhere (inside class, outside class, in derived classes)
+# Convention: Normal naming (no underscore prefix)
+# These members can be accessed and modified from anywhere in the program
+
+class PublicExample:
+    def __init__(self):
+        self.public_var = "I am public"  # Public attribute
+    
+    def public_method(self):  # Public method
+        print("This is a public method")
+
+obj = PublicExample()
+print(obj.public_var)  # Can access directly - Output: I am public
+obj.public_method()    # Can call directly - Output: This is a public method
+
+
+# 2. PROTECTED - Should only be accessed within the class and its subclasses
+# Convention: Single underscore prefix (_variable)
+# It's a weak internal use indicator - Python doesn't enforce this, it's just a convention
+# Other programmers understand they shouldn't access these members directly
+
+class ProtectedExample:
+    def __init__(self):
+        self._protected_var = "I am protected"  # Protected attribute
+    
+    def _protected_method(self):  # Protected method
+        print("This is a protected method")
+
+class Child(ProtectedExample):
+    def access_protected(self):
+        print(self._protected_var)  # Can access in child class
+        self._protected_method()    # Can call in child class
+
+obj2 = ProtectedExample()
+print(obj2._protected_var)  # Can still access (Python doesn't restrict), but shouldn't
+child = Child()
+child.access_protected()    # Proper way to access protected members
+
+
+# 3. PRIVATE - Should only be accessed within the class itself
+# Convention: Double underscore prefix (__variable)
+# Python performs name mangling to make it harder to access from outside
+# Name mangling changes __variable to _ClassName__variable
+
+class PrivateExample:
+    def __init__(self):
+        self.__private_var = "I am private"  # Private attribute
+    
+    def __private_method(self):  # Private method
+        print("This is a private method")
+    
+    def access_private(self):  # Public method to access private members
+        print(self.__private_var)
+        self.__private_method()
+
+obj3 = PrivateExample()
+# print(obj3.__private_var)  # This will cause an error - AttributeError
+obj3.access_private()  # Correct way - Output: I am private, This is a private method
+
+# You can still access using name mangling (but you shouldn't)
+print(obj3._PrivateExample__private_var)  # Output: I am private
+
+
+# Summary Example - All three together
+class BankAccount:
+    def __init__(self, name, balance):
+        self.name = name              # Public - anyone can see account holder name
+        self._account_number = "1234" # Protected - internal use, subclasses can access
+        self.__pin = "5678"           # Private - only this class should access PIN
+    
+    def get_balance(self):            # Public method
+        return f"Balance for {self.name}"
+    
+    def _verify_account(self):        # Protected method
+        return "Account verified"
+    
+    def __check_pin(self, pin):       # Private method
+        return pin == self.__pin
+
+account = BankAccount("John", 1000)
+print(account.name)           # ✓ Public - accessible
+print(account._account_number) # ⚠ Protected - accessible but shouldn't use
+# print(account.__pin)         # ✗ Private - will cause error
+
+
+
+# create a procted variable in employee id and ascess in a inside a child 
+class employee:
+    def __init__(self,empid):
+        self._empid= empid  #protected variable  
+
+class manager(employee):
+    def display(self):
+        print("empid:", self._empid) 
+
+m = manager(223)
+m.display()
+
+
+# There are 3 ways to access the private data or property:
+
+# 1. NAME MANGLING - Using the mangled name format: _ClassName__variableName
+# Syntax: object._ClassName__private_variable
+# Python internally converts __variable to _ClassName__variable
+# Example:
+# class MyClass:
+#     def __init__(self):
+#         self.__private_var = "secret"
+# obj = MyClass()
+# print(obj._MyClass__private_var)  # Accessing using name mangling
+
+# 2. GETTER METHOD - Creating a public method inside the class to return private data
+# Syntax: Define a public method that returns the private variable
+# This is the recommended and proper way to access private data
+# Example:
+# class MyClass:
+#     def __init__(self):
+#         self.__private_var = "secret"
+#     def get_private_var(self):  # Getter method
+#         return self.__private_var
+# obj = MyClass()
+# print(obj.get_private_var())  # Accessing through getter method
+
+# 3. PROPERTY DECORATOR - Using @property to create a getter that can be accessed like an attribute
+# Syntax: Use @property decorator above a method to make it accessible without parentheses
+# This provides a cleaner syntax while maintaining encapsulation
+# Example:
+# class MyClass:
+#     def __init__(self):
+#         self.__private_var = "secret"
+#     @property
+#     def private_var(self):  # Property method
+#         return self.__private_var
+# obj = MyClass()
+# print(obj.private_var)  # Accessing like an attribute (no parentheses needed)
+
+
+#Ex
+class student:
+    def __init__(self):
+        self.__marks= 95      #private variable
+
+    #Setter method
+    def set_marks(self, marks):
+        self.__marks= marks
+
+    #getter method
+    def get_marks(self):
+        return self.__marks
+    
+#creating metho
+s= student()
+
+#setting value
+s.set_marks(98)
+
+#getting value
+print("Marks:",s.get_marks())
