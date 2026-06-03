@@ -246,3 +246,130 @@ obj1 = developer()
 
 obj.log_in()
 obj1.log_in()
+
+
+# home work
+# Question. create a resume builder using multilevel inheritance. create a class 1oth resume to store the personal details and 10th accedimic detiled 
+#creare a class resume 12th that inharit from resume 10th and store 12th accedmic detils.
+#create a class resume degree that inharit resume 12th class and store the accedmic details. use constructor chaining to insilized all the data 
+#use method to display the resume detailed at each level
+# create ojcect for 10,12th and degree class and display their resume.
+
+# Class for 10th Resume
+class Resume10th:
+    def __init__(self, name, age, tenth_marks):
+        self.name = name
+        self.age = age
+        self.tenth_marks = tenth_marks
+
+    def show_10th(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+        print("10th Marks:", self.tenth_marks)
+
+
+# Class for 12th Resume
+class Resume12th(Resume10th):
+    def __init__(self, name, age, tenth_marks, twelfth_marks):
+        super().__init__(name, age, tenth_marks)
+        self.twelfth_marks = twelfth_marks
+
+    def show_12th(self):
+        self.show_10th()
+        print("12th Marks:", self.twelfth_marks)
+
+
+# Class for Degree Resume
+class ResumeDegree(Resume12th):
+    def __init__(self, name, age, tenth_marks, twelfth_marks, degree_marks):
+        super().__init__(name, age, tenth_marks, twelfth_marks)
+        self.degree_marks = degree_marks
+
+    def show_degree(self):
+        self.show_12th()
+        print("Degree Marks:", self.degree_marks)
+
+
+# Object of 10th Resume
+r1 = Resume10th("Shikhar", 19, 85)
+
+# Object of 12th Resume
+r2 = Resume12th("Shikhar", 19, 85, 88)
+
+# Object of Degree Resume
+r3 = ResumeDegree("Shikhar", 19, 85, 88, 90)
+
+# Display Resume Details
+print("----- 10th Resume -----")
+r1.show_10th()
+
+print("\n----- 12th Resume -----")
+r2.show_12th()
+
+print("\n----- Degree Resume -----")
+r3.show_degree()
+
+
+
+#Q. create an employee amangement system using Hierarchical inheritance create a parrent class employee with name email. create two child class tech team and support(mamagement and experiance) team (programing and experiance). using constructor chaining with super function. create two method in parent class display basic detailed and contact details both in parent. extand these two methos in child class by adding their own detailed. use method chaining to diaplay the information of this two child class.
+
+# Parent Class
+class Employee:
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+
+    def display_basic(self):
+        print("Name:", self.name)
+
+    def display_contact(self):
+        print("Email:", self.email)
+
+
+# Child Class 1 - Tech Team
+class TechTeam(Employee):
+    def __init__(self, name, email, programming, experience):
+        super().__init__(name, email)
+        self.programming = programming
+        self.experience = experience
+
+    def display_basic(self):
+        super().display_basic()
+        print("Programming Language:", self.programming)
+
+    def display_contact(self):
+        super().display_contact()
+        print("Experience:", self.experience, "Years")
+
+
+# Child Class 2 - Support Team
+class SupportTeam(Employee):
+    def __init__(self, name, email, management, experience):
+        super().__init__(name, email)
+        self.management = management
+        self.experience = experience
+
+    def display_basic(self):
+        super().display_basic()
+        print("Management Skill:", self.management)
+
+    def display_contact(self):
+        super().display_contact()
+        print("Experience:", self.experience, "Years")
+
+
+# Object of Tech Team
+tech = TechTeam("John", "john@gmail.com", "Python", 3)
+
+# Object of Support Team
+support = SupportTeam("Sally", "sally@gmail.com", "Team Management", 5)
+
+# Display Tech Team Details
+print("----- Tech Team -----")
+tech.display_basic()
+tech.display_contact()
+
+# Display Support Team Details
+print("\n----- Support Team -----")
+support.display_basic()
+support.display_contact()
