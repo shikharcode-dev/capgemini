@@ -83,3 +83,7 @@ print("Updated Marks:", s.marks)
 
 # Validation in action
 s.marks = 150  # This will print error message.
+
+
+#test Q come on saturday
+#Q. test cases question, 
