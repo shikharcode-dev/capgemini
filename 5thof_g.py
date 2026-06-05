@@ -301,3 +301,76 @@ result = sum(list(map(lambda x: x if x > 0 else 0, l)))
 
 print("Original List:", l)
 print("Sum of +ve Numbers:", result) 
+
+
+
+
+# ============================================
+# FILTER FUNCTION IN PYTHON
+# ============================================
+
+# Definition:
+# filter() is used to select/filter elements from an iterable (list, tuple, etc.)
+# based on a condition. It returns only those elements for which the function returns True.
+
+# Syntax:
+# filter(function, iterable)
+
+# Key Difference from map():
+# - map() transforms ALL elements
+# - filter() selects ONLY SOME elements based on a condition
+
+# ============================================
+# SIMPLE EXAMPLE - Filter Even Numbers
+# ============================================
+
+# Get only even numbers from a list
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+
+# Using filter with lambda
+result = list(filter(lambda x: x % 2 == 0, numbers))
+
+print("Original List:", numbers)
+print("Even Numbers Only:", result)
+
+# Output:
+# [2, 4, 6, 8]
+
+# Explanation:
+# - lambda x: x % 2 == 0 checks if number is even
+# - If True, the number is included in result
+# - If False, the number is excluded
+# - Only numbers where condition is True are kept
+
+
+
+
+
+# mam exp=
+l = [5,20,9,32]
+result = list(filter(lambda x: x % 2 == 0, l))
+print("original list:", l)
+print("Even no.:", result)
+
+
+
+
+# Q.
+i = ['Hi', 'MMM', 'Moon']
+
+result = list(filter(lambda x: len(set(x)) == 1, i))
+print("filter list:", result)
+
+
+
+# Q. i want vallid formm of phone number in form of list
+l = ['1024567890', '12395', '123456789a']
+
+result = list(filter(lambda x: len(x) == 10 and x.isdigit(), l))
+
+print("orginal list:", l)
+print("vallid phone no.:", result)
+
+
+#Q. codingbat 
