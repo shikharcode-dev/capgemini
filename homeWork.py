@@ -126,27 +126,27 @@
 
 
 
-numbers_to_squares = lambda nums: {num: num**2 for num in nums}
-print(numbers_to_squares([1, 2, 3, 4, 5]))
-print(numbers_to_squares([10, 20, 30]))
-print(numbers_to_squares(range(1, 6)))
+# numbers_to_squares = lambda nums: {num: num**2 for num in nums}
+# print(numbers_to_squares([1, 2, 3, 4, 5]))
+# print(numbers_to_squares([10, 20, 30]))
+# print(numbers_to_squares(range(1, 6)))
 
 
 
 
 
 
-# Method 2: Using map with custom function (more readable)
-numbers = ['123', '345', '764']
-def reverse_and_convert(string_num):
-    reversed_string = string_num[::-1]  # Reverse the string using slicing
-    return int(reversed_string)  # Convert to integer
+# # Method 2: Using map with custom function (more readable)
+# numbers = ['123', '345', '764']
+# def reverse_and_convert(string_num):
+#     reversed_string = string_num[::-1]  # Reverse the string using slicing
+#     return int(reversed_string)  # Convert to integer
 
-result2 = list(map(reverse_and_convert, numbers))
+# result2 = list(map(reverse_and_convert, numbers))
 
-print("\nUsing custom function:")
-print("Original String List:", numbers)
-print("Reversed Integer List:", result2)
+# print("\nUsing custom function:")
+# print("Original String List:", numbers)
+# print("Reversed Integer List:", result2)
 
 # Explanation:
 # x[::-1] reverses the string ('123' becomes '321')
@@ -157,15 +157,20 @@ print("Reversed Integer List:", result2)
 
 
 
+f = open("student.txt", "w")
+f.write("Shikhar")
+f.close()
 
 
 
 
 
-l = [1,-5,-6,23]
 
-# Filter positive numbers and calculate sum
-result = sum(list(filter(lambda x: x > 0, l)))
 
-print("Original List:", l)
-print("Sum of Positive Numbers:", result)
+# l = [1,-5,-6,23]
+
+# # Filter positive numbers and calculate sum
+# result = sum(list(filter(lambda x: x > 0, l)))
+
+# print("Original List:", l)
+# print("Sum of Positive Numbers:", result)
