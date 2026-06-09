@@ -174,3 +174,9 @@ f.close()
 
 # print("Original List:", l)
 # print("Sum of Positive Numbers:", result)
+
+
+
+
+
+
