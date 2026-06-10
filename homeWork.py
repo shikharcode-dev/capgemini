@@ -157,9 +157,9 @@
 
 
 
-f = open("student.txt", "w")
-f.write("Shikhar")
-f.close()
+# f = open("student.txt", "w")
+# f.write("Shikhar")
+# f.close()
 
 
 
@@ -180,3 +180,48 @@ f.close()
 
 
 
+# Create a parent class Animal with a method eat().
+# Create a child class Dog that inherits from Animal.
+# Add a method bark() in the child class.
+# Create an object of Dog and call both methods.
+class Animal:
+    def eat(self):
+        print("The animal is eating")
+class Dog(Animal):
+    def bark(self):
+        print("The dog is barking: Woof! Woof!")
+
+my_dog = Dog()
+my_dog.eat()   
+my_dog.bark()
+
+
+
+
+
+# Create a parent class Employee.
+# Initialize:
+# employee name
+# salary
+# Create child class Developer.
+# Add:
+# programming language
+# Display all details.
+class Employee:
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+    
+    def display_details(self):
+        print("Employee Name:", self.name)
+        print("Salary:", self.salary)
+class Developer(Employee):
+    def __init__(self, name, salary, programming_language):
+        super().__init__(name, salary)
+        self.programming_language = programming_language
+    
+    def display_details(self):
+        super().display_details()
+        print("Programming Language:", self.programming_language)
+dev = Developer("John", 50000, "Python")
+dev.display_details()
