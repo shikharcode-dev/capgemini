@@ -436,3 +436,16 @@ print(sys.version)
 
 
 
+class Resume10th:
+
+    def __init__(self, name, age, marks10):
+        self.name = name
+        self.age = age
+        self.marks10 = marks10
+
+    def show10(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+        print("10th Marks:", self.marks10)
+
+class Resume12th(Resume10th):
