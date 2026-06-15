@@ -288,22 +288,123 @@
 # Display name and age
 # Display name, age, and course
 
-class Student:
+# class Student:
 
-    def display(self, name, age=None, course=None):
+#     def display(self, name, age=None, course=None):
 
-        print("Name:", name)
+#         print("Name:", name)
 
-        if age is not None:
-            print("Age:", age)
+#         if age is not None:
+#             print("Age:", age)
 
-        if course is not None:
-            print("Course:", course)
+#         if course is not None:
+#             print("Course:", course)
 
-        print()
+#         print()
 
 
-s = Student()
-s.display("Rahul")
-s.display("Shikhar", 19)
-s.display("Aman", 20, "B.Tech")
+# s = Student()
+# s.display("Rahul")
+# s.display("Shikhar", 19)
+# s.display("Aman", 20, "B.Tech")
+
+
+
+
+
+# Question: Create a base class called Vehicle and a child class called Car.The Vehicle class should initialize a brand attribute.The Car class should inherit from Vehicle and initialize its own model attribute.Implement constructor chaining using super() so that when a Car object is created, both the brand and model attributes are initialized correctly
+
+# class Vehicle:
+
+#     def __init__(self, brand):
+#         self.brand = brand
+
+
+# class Car(Vehicle):
+
+#     def __init__(self, brand, model):
+#         super().__init__(brand)
+#         self.model = model
+
+#     def display(self):
+#         print("Brand:", self.brand)
+#         print("Model:", self.model)
+
+
+# c = Car("Toyota", "Fortuner")
+
+# c.display()
+
+
+# Question:Extend the previous Vehicle hierarchy by adding a third level:Grandparent Class (Vehicle): Initializes the brand.Parent Class (Car): Inherits from Vehicle and initializes the model.Child Class (ElectricCar): Inherits from Car and initializes a battery_capacity attribute.Implement chained constructors using super() so that all three attributes are properly initialized when an ElectricCar object is created.
+# class Vehicle:
+
+#     def __init__(self, brand):
+#         self.brand = brand
+
+
+# class Car(Vehicle):
+
+#     def __init__(self, brand, model):
+#         super().__init__(brand)
+#         self.model = model
+
+
+# class ElectricCar(Car):
+
+#     def __init__(self, brand, model, battery_capacity):
+#         super().__init__(brand, model)
+#         self.battery_capacity = battery_capacity
+
+#     def display(self):
+#         print("Brand:", self.brand)
+#         print("Model:", self.model)
+#         print("Battery Capacity:", self.battery_capacity)
+
+
+# e = ElectricCar("Tesla", "Model 3", "75 kWh")
+
+# e.display()
+
+
+# Question : Write a function safe_divide(a, b) that divides a by b. Use exception handling to catch scenarios where b is zero or if either input is not a number. Print distinct descriptive errors for each issue.
+
+# def safe_divide(a, b):
+
+#     try:
+#         print("Result =", a / b)
+
+#     except ZeroDivisionError:
+#         print("Error: Cannot divide by zero")
+
+#     except TypeError:
+#         print("Error: Inputs must be numbers")
+
+
+# safe_divide(10, 2)
+# safe_divide(10, 0)
+# safe_divide(10, "a") 
+
+
+
+
+
+# Write a Python program that creates a generator function that yields cubes of numbers from 1 to n. Accept n from the user.
+
+# Generator function to yield cubes of numbers from 1 to n
+def cube_generator(n):
+    # Loop through numbers from 1 to n (inclusive)
+    for i in range(1, n + 1):
+        # Yield the cube of current number (i^3)
+        yield i ** 3
+
+# Accept input from user
+n = int(input("Enter a number: "))
+
+# Create generator object
+cubes = cube_generator(n)
+
+# Display the cubes
+print(f"Cubes of numbers from 1 to {n}:")
+for cube in cubes:
+    print(cube, end=" ")
