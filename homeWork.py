@@ -391,20 +391,224 @@
 
 # Write a Python program that creates a generator function that yields cubes of numbers from 1 to n. Accept n from the user.
 
-# Generator function to yield cubes of numbers from 1 to n
-def cube_generator(n):
-    # Loop through numbers from 1 to n (inclusive)
-    for i in range(1, n + 1):
-        # Yield the cube of current number (i^3)
-        yield i ** 3
+# # Generator function to yield cubes of numbers from 1 to n
+# def cube_generator(n):
+#     # Loop through numbers from 1 to n (inclusive)
+#     for i in range(1, n + 1):
+#         # Yield the cube of current number (i^3)
+#         yield i ** 3
 
-# Accept input from user
-n = int(input("Enter a number: "))
+# # Accept input from user
+# n = int(input("Enter a number: "))
 
-# Create generator object
-cubes = cube_generator(n)
+# # Create generator object
+# cubes = cube_generator(n)
 
-# Display the cubes
-print(f"Cubes of numbers from 1 to {n}:")
-for cube in cubes:
-    print(cube, end=" ")
+# # Display the cubes
+# print(f"Cubes of numbers from 1 to {n}:")
+# for cube in cubes:
+#     print(cube, end=" ")
+
+
+
+
+
+
+
+
+
+'''Developer (programming language, experience)
+Tester (testing tool, experience)
+Requirements
+Use constructor chaining with super().
+Create two methods in the parent class:
+display_basic_details()
+display_contact_details()
+Extend these methods in both child classes by adding their own details.
+Use method chaining to display the complete information of a Developer and a Tester.'''
+
+# Parent Class
+# class Employee:
+
+#     def __init__(self, name, email):
+#         self.name = name
+#         self.email = email
+
+#     def display_basic_details(self):
+#         print("Name:", self.name)
+#         return self
+
+#     def display_contact_details(self):
+#         print("Email:", self.email)
+#         return self
+
+
+# # Child Class - Developer
+# class Developer(Employee):
+
+#     def __init__(self, name, email, language, experience):
+#         super().__init__(name, email)
+#         self.language = language
+#         self.experience = experience
+
+#     def display_basic_details(self):
+#         super().display_basic_details()
+#         print("Programming Language:", self.language)
+#         return self
+
+#     def display_contact_details(self):
+#         super().display_contact_details()
+#         print("Experience:", self.experience, "years")
+#         return self
+
+
+# # Child Class - Tester
+# class Tester(Employee):
+
+#     def __init__(self, name, email, tool, experience):
+#         super().__init__(name, email)
+#         self.tool = tool
+#         self.experience = experience
+
+#     def display_basic_details(self):
+#         super().display_basic_details()
+#         print("Testing Tool:", self.tool)
+#         return self
+
+#     def display_contact_details(self):
+#         super().display_contact_details()
+#         print("Experience:", self.experience, "years")
+#         return self
+
+
+# # Developer Object
+# dev = Developer("Rahul", "rahul@gmail.com", "Python", 3)
+
+# # Tester Object
+# test = Tester("Shikhar", "shikhar@gmail.com", "Selenium", 2)
+
+
+# print("Developer Details")
+# dev.display_basic_details().display_contact_details()
+
+# print("\nTester Details")
+# test.display_basic_details().display_contact_details()
+
+
+
+
+
+'''Objective: Practice basic classes, lists of objects, and mutating object states.Task: Create two classes: Item and ShoppingCart.Item should have attributes: name, price, and quantity.ShoppingCart should hold a list of items and have methods to:add_item(item): Adds an Item object to the cart.remove_item(item_name): Removes an item from the cart by its name.calculate_total(): Calculates and returns the total price of all items in the cart.Expected Output: Students should be able to create 3 different items, add them to a cart, remove one, and print the correct final total balance.'''
+
+# Item Class
+# class Item:
+
+#     def __init__(self, name, price, quantity):
+#         self.name = name
+#         self.price = price
+#         self.quantity = quantity
+
+
+# # ShoppingCart Class
+# class ShoppingCart:
+
+#     def __init__(self):
+#         self.items = []
+
+#     # Add item
+#     def add_item(self, item):
+#         self.items.append(item)
+
+#     # Remove item by name
+#     def remove_item(self, item_name):
+
+#         for item in self.items:
+#             if item.name == item_name:
+#                 self.items.remove(item)
+#                 print(item_name, "removed")
+#                 break
+
+#     # Calculate total price
+#     def calculate_total(self):
+
+#         total = 0
+
+#         for item in self.items:
+#             total = total + (item.price * item.quantity)
+
+#         return total
+
+
+# # Create items
+# item1 = Item("Pen", 10, 2)
+# item2 = Item("Book", 50, 1)
+# item3 = Item("Pencil", 5, 4)
+
+# # Create shopping cart
+# cart = ShoppingCart()
+
+# # Add items to cart
+# cart.add_item(item1)
+# cart.add_item(item2)
+# cart.add_item(item3)
+
+# # Remove one item
+# cart.remove_item("Book")
+
+# # Print final total
+# print("Final Total =", cart.calculate_total())
+
+
+
+
+
+
+# Objective: Implement Inheritance and Method Overriding.Task: Create a base class called Member with attributes name and member_id.Create a subclass called Student that inherits from Member. Add a list attribute grades. Add a method display_info() that prints the student's name, ID, and their average grade.Create a subclass called Teacher that inherits from Member. Add an attribute subject. Override display_info() to print the teacher's name, ID, and the subject they teach.Expected Output: Students must instantiate both a Student and a Teacher object, call display_info() on both, and demonstrate that the correct overridden version runs for each
+
+
+# Parent Class
+class Member:
+
+    def __init__(self, name, member_id):
+        self.name = name
+        self.member_id = member_id
+
+
+# Child Class - Student
+class Student(Member):
+
+    def __init__(self, name, member_id, grades):
+        super().__init__(name, member_id)
+        self.grades = grades
+
+    def display_info(self):
+        average = sum(self.grades) / len(self.grades)
+
+        print("Name:", self.name)
+        print("ID:", self.member_id)
+        print("Average Grade:", average)
+
+
+# Child Class - Teacher
+class Teacher(Member):
+
+    def __init__(self, name, member_id, subject):
+        super().__init__(name, member_id)
+        self.subject = subject
+
+    def display_info(self):
+        print("Name:", self.name)
+        print("ID:", self.member_id)
+        print("Subject:", self.subject)
+
+
+# Create objects
+s = Student("Rahul", 101, [80, 90, 85])
+t = Teacher("Shikhar", 201, "Python")
+
+# Display details
+print("Student Details")
+s.display_info()
+
+print("\nTeacher Details")
+t.display_info()
