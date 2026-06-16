@@ -567,48 +567,60 @@ Use method chaining to display the complete information of a Developer and a Tes
 
 
 # Parent Class
-class Member:
+# class Member:
 
-    def __init__(self, name, member_id):
-        self.name = name
-        self.member_id = member_id
-
-
-# Child Class - Student
-class Student(Member):
-
-    def __init__(self, name, member_id, grades):
-        super().__init__(name, member_id)
-        self.grades = grades
-
-    def display_info(self):
-        average = sum(self.grades) / len(self.grades)
-
-        print("Name:", self.name)
-        print("ID:", self.member_id)
-        print("Average Grade:", average)
+#     def __init__(self, name, member_id):
+#         self.name = name
+#         self.member_id = member_id
 
 
-# Child Class - Teacher
-class Teacher(Member):
+# # Child Class - Student
+# class Student(Member):
 
-    def __init__(self, name, member_id, subject):
-        super().__init__(name, member_id)
-        self.subject = subject
+#     def __init__(self, name, member_id, grades):
+#         super().__init__(name, member_id)
+#         self.grades = grades
 
-    def display_info(self):
-        print("Name:", self.name)
-        print("ID:", self.member_id)
-        print("Subject:", self.subject)
+#     def display_info(self):
+#         average = sum(self.grades) / len(self.grades)
+
+#         print("Name:", self.name)
+#         print("ID:", self.member_id)
+#         print("Average Grade:", average)
 
 
-# Create objects
-s = Student("Rahul", 101, [80, 90, 85])
-t = Teacher("Shikhar", 201, "Python")
+# # Child Class - Teacher
+# class Teacher(Member):
 
-# Display details
-print("Student Details")
-s.display_info()
+#     def __init__(self, name, member_id, subject):
+#         super().__init__(name, member_id)
+#         self.subject = subject
 
-print("\nTeacher Details")
-t.display_info()
+#     def display_info(self):
+#         print("Name:", self.name)
+#         print("ID:", self.member_id)
+#         print("Subject:", self.subject)
+
+
+# # Create objects
+# s = Student("Rahul", 101, [80, 90, 85])
+# t = Teacher("Shikhar", 201, "Python")
+
+# # Display details
+# print("Student Details")
+# s.display_info()
+
+# print("\nTeacher Details")
+# t.display_info()
+
+
+
+
+
+
+
+
+
+
+
+
