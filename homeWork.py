@@ -500,7 +500,7 @@ Use method chaining to display the complete information of a Developer and a Tes
 
 '''Objective: Practice basic classes, lists of objects, and mutating object states.Task: Create two classes: Item and ShoppingCart.Item should have attributes: name, price, and quantity.ShoppingCart should hold a list of items and have methods to:add_item(item): Adds an Item object to the cart.remove_item(item_name): Removes an item from the cart by its name.calculate_total(): Calculates and returns the total price of all items in the cart.Expected Output: Students should be able to create 3 different items, add them to a cart, remove one, and print the correct final total balance.'''
 
-# Item Class
+
 # class Item:
 
 #     def __init__(self, name, price, quantity):
@@ -563,10 +563,10 @@ Use method chaining to display the complete information of a Developer and a Tes
 
 
 
-# Objective: Implement Inheritance and Method Overriding.Task: Create a base class called Member with attributes name and member_id.Create a subclass called Student that inherits from Member. Add a list attribute grades. Add a method display_info() that prints the student's name, ID, and their average grade.Create a subclass called Teacher that inherits from Member. Add an attribute subject. Override display_info() to print the teacher's name, ID, and the subject they teach.Expected Output: Students must instantiate both a Student and a Teacher object, call display_info() on both, and demonstrate that the correct overridden version runs for each
+# # Objective: Implement Inheritance and Method Overriding.Task: Create a base class called Member with attributes name and member_id.Create a subclass called Student that inherits from Member. Add a list attribute grades. Add a method display_info() that prints the student's name, ID, and their average grade.Create a subclass called Teacher that inherits from Member. Add an attribute subject. Override display_info() to print the teacher's name, ID, and the subject they teach.Expected Output: Students must instantiate both a Student and a Teacher object, call display_info() on both, and demonstrate that the correct overridden version runs for each
 
 
-# Parent Class
+# #Parent Class
 # class Member:
 
 #     def __init__(self, name, member_id):
@@ -574,46 +574,44 @@ Use method chaining to display the complete information of a Developer and a Tes
 #         self.member_id = member_id
 
 
-# # Child Class - Student
-# class Student(Member):
+# # # Child Class - Student
+# # class Student(Member):
 
-#     def __init__(self, name, member_id, grades):
-#         super().__init__(name, member_id)
-#         self.grades = grades
+# #     def __init__(self, name, member_id, grades):
+# #         super().__init__(name, member_id)
+# #         self.grades = grades
 
-#     def display_info(self):
-#         average = sum(self.grades) / len(self.grades)
+# #     def display_info(self):
+# #         average = sum(self.grades) / len(self.grades)
 
-#         print("Name:", self.name)
-#         print("ID:", self.member_id)
-#         print("Average Grade:", average)
-
-
-# # Child Class - Teacher
-# class Teacher(Member):
-
-#     def __init__(self, name, member_id, subject):
-#         super().__init__(name, member_id)
-#         self.subject = subject
-
-#     def display_info(self):
-#         print("Name:", self.name)
-#         print("ID:", self.member_id)
-#         print("Subject:", self.subject)
+# #         print("Name:", self.name)
+# #         print("ID:", self.member_id)
+# #         print("Average Grade:", average)
 
 
-# # Create objects
-# s = Student("Rahul", 101, [80, 90, 85])
-# t = Teacher("Shikhar", 201, "Python")
+# # # Child Class - Teacher
+# # class Teacher(Member):
 
-# # Display details
-# print("Student Details")
-# s.display_info()
+# #     def __init__(self, name, member_id, subject):
+# #         super().__init__(name, member_id)
+# #         self.subject = subject
 
-# print("\nTeacher Details")
-# t.display_info()
+# #     def display_info(self):
+# #         print("Name:", self.name)
+# #         print("ID:", self.member_id)
+# #         print("Subject:", self.subject)
 
 
+# # # Create objects
+# # s = Student("Rahul", 101, [80, 90, 85])
+# # t = Teacher("Shikhar", 201, "Python")
+
+# # # Display details
+# # print("Student Details")
+# # s.display_info()
+
+# # print("\nTeacher Details")
+# # t.display_info()
 
 
 
@@ -622,5 +620,175 @@ Use method chaining to display the complete information of a Developer and a Tes
 
 
 
+# # Objective: Master Encapsulation using private attributes and property getters/setters. 
+# # Task: Create a SmartThermostat class.
+# # Keep the __temperature attribute private so it cannot be changed directly from outside the class.
+# # Use the @property decorator to create a getter for temperature.
+# # Create a setter for temperature that includes validation rules: the temperature can only be set between 15°C and 30°C. If a value outside this range is given, print a warning or raise a ValueError without updating the value.
+# # Expected Output: Students should show that they can read the temperature, change it safely within bounds, but are blocked with an error if they try to set it to an invalid temperature (like 50°C)
+
+# class SmartThermostat:
+
+#     def __init__(self, temperature):
+#         self.__temperature = temperature   # Private attribute
+
+#     # Getter
+#     @property
+#     def temperature(self):
+#         return self.__temperature
+
+#     # Setter
+#     @temperature.setter
+#     def temperature(self, value):
+
+#         if 15 <= value <= 30:
+#             self.__temperature = value
+#             print("Temperature Updated")
+
+#         else:
+#             print("Temperature must be between 15°C and 30°C")
 
 
+# # Create object
+# thermostat = SmartThermostat(20) 
+
+# # Read temperature
+# print("Current Temperature:", thermostat.temperature)
+
+# # Valid update
+# thermostat.temperature = 25
+# print("Updated Temperature:", thermostat.temperature)
+
+# # Invalid update
+# thermostat.temperature = 50
+# print("Final Temperature:", thermostat.temperature)
+
+
+
+
+
+
+
+# # Objective: Understand object collaboration, tracking shared class data, and basic abstraction.
+# # Task: Design a system with a Book class and a Library class.
+# # Book should track title, author, and a boolean is_borrowed flag.
+# # Library should maintain a collection of books. Implement methods borrow_book(title) and return_book(title).
+# # Bonus Challenge: Add a class-level variable total_borrowed_books in Library that increments every time a book is borrowed and decrements when returned.
+# # Expected Output: A working script where multiple books are added to the library, a student borrows a book (marking it unavailable), and the system successfully tracks how many total books are currently checked out
+
+
+# class Book:
+
+#     def __init__(self, title, author):
+#         self.title = title
+#         self.author = author
+#         self.is_borrowed = False
+
+
+# class Library:
+
+#     total_borrowed_books = 0
+
+#     def __init__(self):
+#         self.books = []
+
+#     def add_book(self, book):
+#         self.books.append(book)
+
+#     def borrow_book(self, title):
+
+#         for book in self.books:
+
+#             if book.title == title:
+
+#                 if book.is_borrowed:
+#                     print("Book already borrowed")
+
+#                 else:
+#                     book.is_borrowed = True
+#                     Library.total_borrowed_books += 1
+#                     print(title, "borrowed successfully")
+
+#                 return
+
+#         print("Book not found")
+
+#     def return_book(self, title):
+
+#         for book in self.books:
+
+#             if book.title == title:
+
+#                 if book.is_borrowed:
+#                     book.is_borrowed = False
+#                     Library.total_borrowed_books -= 1
+#                     print(title, "returned successfully")
+
+#                 else:
+#                     print("Book was not borrowed")
+
+#                 return
+
+#         print("Book not found")
+
+
+# # Create Library
+# library = Library()
+
+# # Add Books
+# library.add_book(Book("Python", "John"))
+# library.add_book(Book("Java", "Emma"))
+# library.add_book(Book("C++", "David"))
+
+# # Borrow Book
+# library.borrow_book("Python")
+
+# # Display borrowed count
+# print("Total Borrowed Books:", Library.total_borrowed_books)
+
+# # Return Book
+# library.return_book("Python")
+
+# # Display borrowed count again
+# print("Total Borrowed Books:", Library.total_borrowed_books)
+
+
+
+
+
+
+
+
+# Objective: Implement Polymorphism using operator overloading.Task: Create a Time class that represents hours and minutes, initialized as Time(hours, minutes).Overload the addition operator (_add) so that adding two Time objects together (e.g., t1 + t2) automatically handles minute overflow (e.g., 50 minutes + 20 minutes should add 1 to hours and leave 10 minutes).Overload the string representation (str_) so printing the object displays it neatly as HH:MM.Expected Output: Running print(Time(1, 45) + Time(2, 30)) should directly output 04:15 on the screen
+
+class Time:
+
+    def __init__(self, hours, minutes):
+        self.hours = hours
+        self.minutes = minutes
+
+    # Overload + operator
+    def __add__(self, other):
+
+        total_minutes = self.minutes + other.minutes
+        total_hours = self.hours + other.hours
+
+        # Handle minute overflow
+        if total_minutes >= 60:
+            total_hours += 1
+            total_minutes -= 60
+
+        return Time(total_hours, total_minutes)
+
+    # Display time as HH:MM
+    def __str__(self):
+
+        return f"{self.hours:02}:{self.minutes:02}"
+
+
+# Create objects
+t1 = Time(1, 45)
+t2 = Time(2, 30)
+
+# Add and display
+print(t1 + t2)  
