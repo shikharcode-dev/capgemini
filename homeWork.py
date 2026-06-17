@@ -761,34 +761,195 @@ Use method chaining to display the complete information of a Developer and a Tes
 
 # Objective: Implement Polymorphism using operator overloading.Task: Create a Time class that represents hours and minutes, initialized as Time(hours, minutes).Overload the addition operator (_add) so that adding two Time objects together (e.g., t1 + t2) automatically handles minute overflow (e.g., 50 minutes + 20 minutes should add 1 to hours and leave 10 minutes).Overload the string representation (str_) so printing the object displays it neatly as HH:MM.Expected Output: Running print(Time(1, 45) + Time(2, 30)) should directly output 04:15 on the screen
 
-class Time:
+# class Time:
 
-    def __init__(self, hours, minutes):
-        self.hours = hours
-        self.minutes = minutes
+#     def __init__(self, hours, minutes):
+#         self.hours = hours
+#         self.minutes = minutes
 
-    # Overload + operator
-    def __add__(self, other):
+#     # Overload + operator
+#     def __add__(self, other):
 
-        total_minutes = self.minutes + other.minutes
-        total_hours = self.hours + other.hours
+#         total_minutes = self.minutes + other.minutes
+#         total_hours = self.hours + other.hours
 
-        # Handle minute overflow
-        if total_minutes >= 60:
-            total_hours += 1
-            total_minutes -= 60
+#         # Handle minute overflow
+#         if total_minutes >= 60:
+#             total_hours += 1
+#             total_minutes -= 60
 
-        return Time(total_hours, total_minutes)
+#         return Time(total_hours, total_minutes)
 
-    # Display time as HH:MM
-    def __str__(self):
+#     # Display time as HH:MM
+#     def __str__(self):
 
-        return f"{self.hours:02}:{self.minutes:02}"
+#         return f"{self.hours:02}:{self.minutes:02}"
 
 
-# Create objects
-t1 = Time(1, 45)
-t2 = Time(2, 30)
+# # Create objects
+# t1 = Time(1, 45)
+# t2 = Time(2, 30)
 
-# Add and display
-print(t1 + t2)  
+# # Add and display
+# print(t1 + t2)  
+
+
+
+
+
+
+
+
+# Objective: Practice writing basic anonymous lambda functions combined with map() to transform an iterable collection of numbers. [1, 2]
+# Task: You are given a list of raw item prices: [19.99, 5.50, 100.00, 45.00]. Use a lambda function inside a map() call to apply a 10% discount to every item.
+# Expected Output: A new list containing the discounted prices: [17.991, 4.95, 90.0, 40.5]. [1, 2]
+
+# List of item prices
+prices = [19.99, 5.50, 100.00, 45.00]
+discounted_prices = list(map(lambda x: x * 0.9, prices))
+print("Discounted Prices:", discounted_prices)
+
+
+
+
+
+
+# Objective: Practice managing lists of objects, structural conditional logic, and state changes. [1]
+# Task: Create a Room class and a Hotel class.
+# Room should have attributes: room_number, room_type (e.g., Single, Double, Suite), price_per_night, and is_occupied (boolean, defaults to False).
+# Hotel should contain a list of Room objects and include these methods:
+# add_room(room): Adds a new room to the hotel inventory.
+# check_in(room_type): Finds the first available room of that type, marks it as occupied, and returns the room number. If none are free, return a "No rooms available" message.
+# check_out(room_number): Finds the room by its number and marks is_occupied back to False.
+# Expected Output: Students instantiate a hotel, add 3-4 rooms, simulate checking guests in and out, and demonstrate that occupied rooms cannot be double-booked.
+# Room Class
+
+# class Room:
+
+#     def __init__(self, room_number, room_type, price_per_night):
+#         self.room_number = room_number
+#         self.room_type = room_type
+#         self.price_per_night = price_per_night
+#         self.is_occupied = False
+
+
+# # Hotel Class
+# class Hotel:
+
+#     def __init__(self):
+#         self.rooms = []
+
+#     # Add Room
+#     def add_room(self, room):
+#         self.rooms.append(room)
+
+#     # Check In
+#     def check_in(self, room_type):
+
+#         for room in self.rooms:
+
+#             if room.room_type == room_type and not room.is_occupied:
+
+#                 room.is_occupied = True
+
+#                 print("Room Booked:", room.room_number)
+
+#                 return
+
+#         print("No rooms available")
+
+#     # Check Out
+#     def check_out(self, room_number):
+
+#         for room in self.rooms:
+
+#             if room.room_number == room_number:
+
+#                 room.is_occupied = False
+
+#                 print("Room Checked Out:", room_number)
+
+#                 return
+
+#         print("Room not found")
+
+
+# # Create Hotel
+# hotel = Hotel()
+
+# # Add Rooms
+# hotel.add_room(Room(101, "Single", 1000))
+# hotel.add_room(Room(102, "Single", 1000))
+# hotel.add_room(Room(201, "Double", 2000))
+# hotel.add_room(Room(301, "Suite", 5000))
+
+# # Check In Guests
+# hotel.check_in("Single")
+# hotel.check_in("Single")
+# hotel.check_in("Single")   # No room available
+
+# # Check Out
+# hotel.check_out(101)
+
+# # Check In Again
+# hotel.check_in("Single")
+
+
+
+
+
+
+# Objective: Master Inheritance and structural Polymorphism where subclasses implement matching methods differently.
+# Task: Create an abstract base class Employee using the abc module.
+# The base class must have an abstract method called calculate_salary().
+# Create a subclass SalariedEmployee with attributes name and monthly_salary. Implement calculate_salary() to return the flat monthly rate.
+# Create a subclass HourlyEmployee with attributes name, hourly_rate, and hours_worked. Implement calculate_salary() to return hourly_rate * hours_worked.
+# Expected Output: Students should loop through a mixed list containing both types of employee objects and print their names alongside their calculated salaries using a single unified loop.
+
+from abc import ABC, abstractmethod
+
+
+# Abstract Class
+class Employee(ABC):
+
+    @abstractmethod
+    def calculate_salary(self):
+        pass
+
+
+# Salaried Employee
+class SalariedEmployee(Employee):
+
+    def __init__(self, name, monthly_salary):
+        self.name = name
+        self.monthly_salary = monthly_salary
+
+    def calculate_salary(self):
+        return self.monthly_salary
+
+
+# Hourly Employee
+class HourlyEmployee(Employee):
+
+    def __init__(self, name, hourly_rate, hours_worked):
+        self.name = name
+        self.hourly_rate = hourly_rate
+        self.hours_worked = hours_worked
+
+    def calculate_salary(self):
+        return self.hourly_rate * self.hours_worked
+
+
+# Create Employees
+e1 = SalariedEmployee("Rahul", 50000)
+e2 = HourlyEmployee("Shikhar", 500, 100)
+
+# Store in a list
+employees = [e1, e2]
+
+# Single Loop
+for emp in employees:
+
+    print("Name:", emp.name)
+    print("Salary:", emp.calculate_salary())
+    print()
