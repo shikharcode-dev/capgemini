@@ -906,50 +906,122 @@ print("Discounted Prices:", discounted_prices)
 # Create a subclass HourlyEmployee with attributes name, hourly_rate, and hours_worked. Implement calculate_salary() to return hourly_rate * hours_worked.
 # Expected Output: Students should loop through a mixed list containing both types of employee objects and print their names alongside their calculated salaries using a single unified loop.
 
-from abc import ABC, abstractmethod
+# from abc import ABC, abstractmethod
 
 
-# Abstract Class
-class Employee(ABC):
+# # Abstract Class
+# class Employee(ABC):
 
-    @abstractmethod
-    def calculate_salary(self):
-        pass
+#     @abstractmethod
+#     def calculate_salary(self):
+#         pass
 
 
-# Salaried Employee
-class SalariedEmployee(Employee):
+# # Salaried Employee
+# class SalariedEmployee(Employee):
 
-    def __init__(self, name, monthly_salary):
+#     def __init__(self, name, monthly_salary):
+#         self.name = name
+#         self.monthly_salary = monthly_salary
+
+#     def calculate_salary(self):
+#         return self.monthly_salary
+
+
+# # Hourly Employee
+# class HourlyEmployee(Employee):
+
+#     def __init__(self, name, hourly_rate, hours_worked):
+#         self.name = name
+#         self.hourly_rate = hourly_rate
+#         self.hours_worked = hours_worked
+
+#     def calculate_salary(self):
+#         return self.hourly_rate * self.hours_worked
+
+
+# # Create Employees
+# e1 = SalariedEmployee("Rahul", 50000)
+# e2 = HourlyEmployee("Shikhar", 500, 100)
+
+# # Store in a list
+# employees = [e1, e2]
+
+# # Single Loop
+# for emp in employees:
+
+#     print("Name:", emp.name)
+#     print("Salary:", emp.calculate_salary())
+#     print()/
+
+
+
+
+
+
+# Objective: Work with class-level communication, data changes, and threshold tracking.
+# Task: Create a Product class to manage store warehouse inventory.
+# Attributes: product_id, name, stock_level, and reorder_threshold.
+# Methods:
+# sell(quantity): Reduces the stock_level by the given amount. If stock_level drops below or meets the reorder_threshold, trigger an automated print alert: "Warning: Low stock for [Product Name]. Reorder immediately!"
+# restock(quantity): Increases the stock_level.
+# Prevent negative inventory loops (if a user tries to sell more than what is currently in stock, raise an error or display an "Insufficient Stock" message).
+# Expected Output: A simulation showing a stock reduction that drops past the threshold, correctly firing off the automated restock alert message
+
+class Product:
+
+    def __init__(self, product_id, name, stock_level, reorder_threshold):
+        self.product_id = product_id
         self.name = name
-        self.monthly_salary = monthly_salary
+        self.stock_level = stock_level
+        self.reorder_threshold = reorder_threshold
 
-    def calculate_salary(self):
-        return self.monthly_salary
+    # Sell Product
+    def sell(self, quantity):
+
+        if quantity > self.stock_level:
+            print("Insufficient Stock")
+            return
+
+        self.stock_level -= quantity
+
+        print(quantity, "items sold")
+        print("Current Stock:", self.stock_level)
+
+        if self.stock_level <= self.reorder_threshold:
+            print("Warning: Low stock for", self.name)
+            print("Reorder immediately!")
+
+    # Restock Product
+    def restock(self, quantity):
+
+        self.stock_level += quantity
+
+        print(quantity, "items added")
+        print("Current Stock:", self.stock_level)
 
 
-# Hourly Employee
-class HourlyEmployee(Employee):
+# Create Product
+p1 = Product(101, "Laptop", 20, 5)
 
-    def __init__(self, name, hourly_rate, hours_worked):
-        self.name = name
-        self.hourly_rate = hourly_rate
-        self.hours_worked = hours_worked
+# Sell Products
+p1.sell(10)
 
-    def calculate_salary(self):
-        return self.hourly_rate * self.hours_worked
+print()
+
+p1.sell(5)
+
+print()
+
+p1.sell(3)
+
+print()
+
+# Restock
+p1.restock(15)
 
 
-# Create Employees
-e1 = SalariedEmployee("Rahul", 50000)
-e2 = HourlyEmployee("Shikhar", 500, 100)
 
-# Store in a list
-employees = [e1, e2]
 
-# Single Loop
-for emp in employees:
 
-    print("Name:", emp.name)
-    print("Salary:", emp.calculate_salary())
-    print()
+
