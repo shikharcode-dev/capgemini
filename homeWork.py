@@ -1025,3 +1025,47 @@ p1.restock(15)
 
 
 
+'''Objective: Practice simple conditions (if/else) to keep attributes within real-world limits (0 to 100).
+Task: Create a Smartphone class.
+Attributes: model (string) and battery_level (integer, defaults to 100).
+Methods:
+use_app(minutes): Reduces battery_level by 1 percent for every 5 minutes used. If the battery hits 0, print "Phone dead!".
+charge(amount): Increases battery_level by the amount. Ensure it never goes above 100.
+Expected Output: Create a phone, use an app for 30 minutes (dropping battery by 6%), charge it by 20%, and print the final battery level'''
+class Smartphone:
+
+    def __init__(self, model):
+        self.model = model
+        self.battery_level = 100
+
+    # Use App
+    def use_app(self, minutes):
+
+        battery_used = minutes // 5
+
+        self.battery_level -= battery_used
+
+        if self.battery_level <= 0:
+            self.battery_level = 0
+            print("Phone dead!")
+
+    # Charge Phone
+    def charge(self, amount):
+
+        self.battery_level += amount
+
+        if self.battery_level > 100:
+            self.battery_level = 100
+
+
+# Create Phone
+phone = Smartphone("Samsung")
+
+# Use app for 30 minutes
+phone.use_app(30)
+
+# Charge by 20%
+phone.charge(20)
+
+# Display battery level
+print("Battery Level:", phone.battery_level, "%")
