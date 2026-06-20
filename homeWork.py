@@ -1069,3 +1069,67 @@ phone.charge(20)
 
 # Display battery level
 print("Battery Level:", phone.battery_level, "%")
+
+
+
+
+
+# Objective: Practice object state management, conditional logic, and real-world constraints.
+# Task: Create a BankAccount class.
+# Attributes: account_holder (string), balance (float, defaults to 0), and minimum_balance (float, defaults to 500).
+# Methods:
+# deposit(amount): Adds the amount to balance. Print confirmation message.
+# withdraw(amount): Reduces balance by the amount. If withdrawal causes balance to fall below minimum_balance, print "Insufficient funds! Minimum balance required: 500" and don't process the withdrawal.
+# check_balance(): Prints the current balance.
+# Expected Output: Create an account, deposit 2000, withdraw 1000 (successful), try to withdraw 800 (should fail due to minimum balance), and display final balance.
+
+class BankAccount:
+
+    def __init__(self, account_holder, balance=0, minimum_balance=500):
+        self.account_holder = account_holder
+        self.balance = balance
+        self.minimum_balance = minimum_balance
+
+    # Deposit Money
+    def deposit(self, amount):
+        self.balance += amount
+        print(amount, "deposited successfully")
+        print("Current Balance:", self.balance)
+
+    # Withdraw Money
+    def withdraw(self, amount):
+
+        if self.balance - amount < self.minimum_balance:
+            print("Insufficient funds! Minimum balance required:", self.minimum_balance)
+            return
+
+        self.balance -= amount
+        print(amount, "withdrawn successfully")
+        print("Current Balance:", self.balance)
+
+    # Check Balance
+    def check_balance(self):
+        print("Account Holder:", self.account_holder)
+        print("Current Balance:", self.balance)
+
+
+# Create Account
+account = BankAccount("Rahul")
+
+# Deposit Money
+account.deposit(2000)
+
+print()
+
+# Withdraw Money (Successful)
+account.withdraw(1000)
+
+print()
+
+# Withdraw Money (Failed - Below Minimum Balance)
+account.withdraw(800)
+
+print()
+
+# Check Final Balance
+account.check_balance()
